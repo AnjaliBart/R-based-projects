@@ -16,13 +16,6 @@ library(forcats)
 library(treemapify)
 library(colorspace)
 
-getwd()
-
-setwd('E:/GDAC/CaseStudy/StarbucksDataset/archive (1)')
-
-```
-
-```{r}
 
 ## STEP 1: Collect data
 
