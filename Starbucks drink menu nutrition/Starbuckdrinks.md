@@ -1,8 +1,5 @@
 ---
-title: "Starbucksdrinks"
-author: "Anjali"
-date: '2023-03-15'
-output: git_document
+
 ---
 
 #Starbuck drinks menu analysis
