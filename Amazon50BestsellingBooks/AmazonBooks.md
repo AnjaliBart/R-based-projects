@@ -13,7 +13,6 @@ library(dplyr)
 library(readxl)
 library(lubridate)
 
-setwd('E:/GDAC/CaseStudy/Amazon 50 BestSellingBooks/archive')
 ```
 
 ```{r}
@@ -122,9 +121,10 @@ ggplot(data = popular_author) + geom_col(mapping= aes(x=no_of_books , y= Author)
 
 # top 10 author ratings distribution -- boxplot
 
-boxplot(b_2019$`User Rating`~ b_2019$Genre)
-
-ggplot(b_2019, aes(x=Genre, y=`User Rating`, fill= Genre)) + stat_boxplot(geom = "errorbar",width = 0.25)  +geom_boxplot()
+      boxplot(b_2019$`User Rating`~ b_2019$Genre)
+      
+      # using ggplot
+      ggplot(b_2019, aes(x=Genre, y=`User Rating`, fill= Genre)) + stat_boxplot(geom = "errorbar",width = 0.25)  +geom_boxplot()
 
 # Relationship ratings-year - scatterplot
 
@@ -133,36 +133,40 @@ ggplot(data = avg_rating) + geom_point(mapping= aes(x= Year, y=Avg_rating , colo
 
 # ratings distribution - histogram
 
-rating <- b_2019$`User Rating`
+      rating <- b_2019$`User Rating`
 
-View(rating)
-min(rating)
+      View(rating)
+      min(rating)
 
-x <- seq(min(rating), max(rating), length = 40)
-f <- dnorm(x, mean = mean(rating), sd = sd(rating))
-hist(rating, prob=TRUE, main="Ratings distribution", xlab = "Ratings", xlim = c(3,5), col= "cyan")
-lines(x, f, col = "red", lwd = 2)
+      # without using ggplot
+      x <- seq(min(rating), max(rating), length = 40)
+      f <- dnorm(x, mean = mean(rating), sd = sd(rating))
+      hist(rating, prob=TRUE, main="Ratings distribution", xlab = "Ratings", xlim = c(3,5), col= "cyan")
+      lines(x, f, col = "red", lwd = 2)
 
-ggplot(data=b_2019, aes(x=rating)) +
-  geom_histogram(fill="steelblue", color="black", binwidth = 0.1) +
-  ggtitle("Histogram of Rating Values")
+      # with ggplot
+      ggplot(data=b_2019, aes(x=rating)) +
+           geom_histogram(fill="steelblue", color="black", binwidth = 0.1) +
+           ggtitle("Histogram of Rating Values")
 
 # price distribution - histogram
 
-price <- b_2019$Price
+    price <- b_2019$Price
 
-min(price)
-max(price)
+    min(price)
+    max(price)
 
-x2 <- seq(min(price), max(price), length = 40)
-fun <- dnorm(x2, mean = mean(price), sd = sd(price))
+    # without using ggplot
+    x2 <- seq(min(price), max(price), length = 40)
+    fun <- dnorm(x2, mean = mean(price), sd = sd(price))
 
-hist(price, prob=TRUE, main="Price distribution", xlab = "Price", col= "cyan")
-lines(x2, fun, col = "red", lwd = 2)
+    hist(price, prob=TRUE, main="Price distribution", xlab = "Price", col= "cyan")
+    lines(x2, fun, col = "red", lwd = 2)
 
-ggplot(data=b_2019, aes(x=Price)) +
-  geom_histogram(fill="steelblue", color="black", binwidth = 0.5) +
-  ggtitle("Histogram of Price Values")
+    # using ggplot
+    ggplot(data=b_2019, aes(x=Price)) +
+        geom_histogram(fill="steelblue", color="black", binwidth = 0.5) +
+        ggtitle("Histogram of Price Values")
 
 
 ```
